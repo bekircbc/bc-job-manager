@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import "./App.scss";
 import axios from "axios";
 
-const backend_url = import.meta.env.VITE_BACKEND_URL;
+// const backend_url = ;
+const backend_url =
+  import.meta.env.VITE_BACKEND_URL ||
+  "https://bbc-job-manager-backend.herokuapp.com/job-sources";
 
 function App() {
   const [jobSources, setJobSources] = useState([]);
-
   useEffect(() => {
     (async () => {
-      setJobSources((await axios.get(backend_url)).data);
+      setJobSources((await axios.get(backend_url)).data.jobSources);
     })();
   }, []);
 
