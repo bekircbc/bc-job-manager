@@ -3,12 +3,14 @@ import "./App.scss";
 import axios from "axios";
 
 const backend_url = import.meta.env.VITE_BACKEND_URL;
+console.log(backend_url);
 
 function App() {
   const [jobSources, setJobSources] = useState([]);
   useEffect(() => {
     (async () => {
       setJobSources((await axios.get(backend_url)).data.jobSources);
+      console.log(jobSources);
     })();
   }, []);
 
